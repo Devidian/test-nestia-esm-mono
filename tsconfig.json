@@ -1,0 +1,66 @@
+{
+  "extends": "@tsconfig/esm/tsconfig.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "target": "ES2020",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "lib": [
+      "ESNext"
+    ],
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "paths": {},
+    "plugins": [
+      {
+        "transform": "@nestia/core/lib/transform",
+        /**
+         * Validate request body.
+         * 
+         *   - "assert": Use typia.assert() function
+         *   - "is": Use typia.is() function
+         *   - "validate": Use typia.validate() function
+         *   - "assertEquals": Use typia.assertEquals() function
+         *   - "equals": Use typia.equals() function
+         *   - "validateEquals": Use typia.validateEquals() function
+         */
+        "validate": "validate",
+        /**
+         * Validate JSON typed response body.
+         * 
+         *   - "assert": Use typia.assertStringify() function
+         *   - "is": Use typia.isStringify() function
+         *   - "validate": Use typia.validateStringify() function
+         *   - "stringify": Use typia.stringify() function, but dangerous
+         *   - null: Just use JSON.stringify() function, without boosting
+         */
+        "stringify": "validate"
+      },
+      {
+        "transform": "typia/lib/transform"
+      }
+    ]
+  },
+  "ts-node": {
+    "transpileOnly": false,
+    "files": true,
+    "compilerOptions": {},
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

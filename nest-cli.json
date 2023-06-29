@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/test-nestia-esm-mono/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": false,
+    "tsConfigPath": "apps/test-nestia-esm-mono/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/test-nestia-esm-mono",
+  "projects": {
+    "test-nestia-esm-mono": {
+      "type": "application",
+      "root": "apps/test-nestia-esm-mono",
+      "entryFile": "main",
+      "sourceRoot": "apps/test-nestia-esm-mono/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/test-nestia-esm-mono/tsconfig.app.json"
+      }
+    },
+    "app2": {
+      "type": "application",
+      "root": "apps/app2",
+      "entryFile": "main",
+      "sourceRoot": "apps/app2/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/app2/tsconfig.app.json"
+      }
+    }
+  }
+}
